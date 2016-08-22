@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace ContinuousDeployment.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -16,11 +16,18 @@ namespace ContinuousDeployment.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        [HttpGet]
+        [Route("api/foo/{id}")]
+        public string MyCoolAPIAction(int id)
         {
-            return "value";
+            return "value " + id;
         }
+
+        //// GET api/values/5
+        //public string Get(int id)
+        //{
+        //    return "value " + id;
+        //}
 
         // POST api/values
         public void Post([FromBody]string value)
